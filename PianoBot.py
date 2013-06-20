@@ -36,6 +36,7 @@ username = raw_input('Email username? ')
 password = getpass('Email password? (hidden) ')
 port = raw_input('MIDI port? ')
 code = generate_id()
+print code
 usedCode = None
 while True: #main loop
 	latest_email = imap_get_latest(username, password, 'imap.gmail.com')
