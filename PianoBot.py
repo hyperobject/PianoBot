@@ -43,10 +43,10 @@ while True: #main loop
 	if latest_email['Subject'] == code and not latest_email['Subject'] == usedCode:
 		body = latest_email.get_payload()[0].get_payload()
 		urllib.urlretrieve(body, 'play.mid')
-		call(['pmidi -p', port + ' play.mid'])
+		call(['pmidi', '-p', port, 'play.mid'])
 		os.remove('play.mid')
 		usedCode = code
 		code = generate_id()
-		sendemail(username, password, 'smtp.gmail.com:587', 'Thanks. Command was ' + body + '. The new code is ' + code, "Command ran successfully", latest_email['From'])
+		sendemail(username, password, 'smtp.gmail.com:587', 'Thanks. URL was ' + body + '. The new code is ' + code, "Song played", latest_email['From'])
 		print code
 	time.sleep(60)
